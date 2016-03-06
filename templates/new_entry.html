@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<script src ="../static/js/jquery-1.12.1.min.js"></script>
+<script src ="../static/js/delivery.js"></script>
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+
+<head>
+	<title>New Entry</title>
+</head>
+<body>
+	
+	<button onclick="location.href='/'"> Go Back To Home </button>
+	<a class='button' href='/results'> Go Back</a>
+	<h1> Creating New Entry </h1>
+	<form method="POST">
+		<dl>
+			{{ form.csrf_token }}
+			{% from "_formhelpers.html" import render_field %}
+			{{ render_field(form.name) }}
+			{{ render_field(form.phone) }}
+			{{ render_field(form.address) }}
+			{{ form.createNewEntry() }}
+	</form>
+</body>
+</html>

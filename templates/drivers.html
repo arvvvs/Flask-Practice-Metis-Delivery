@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<script src ="../static/js/jquery-1.12.1.min.js"></script>
+<script src ="../static/js/delivery.js"></script>
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+<button onclick="location.href='/'"> Go Back </button>
+<br />
+<form method="POST" action={{ url_for('deliveries') }} id='drivers' name='drivers'>
+<select multiple style="width:30%" method="POST" id='drivers' name='drivers'>
+	{% for information in results %}
+		{% for point in information%}
+		<option value={{point}}>{{point}}</option>
+		{% endfor %}
+		{% endfor %}
+</select>
+<br />
+<button type='submit' value='submit'>Submit</button>
+</form>

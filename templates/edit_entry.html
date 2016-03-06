@@ -1,0 +1,14 @@
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+	<h1> Edit Entry </h1>
+	<form method="POST">
+		<dl>
+			{{ form.csrf_token }}
+			{% from "_formhelpers.html" import render_field %}
+			{{ render_field(form.name) }}
+			{{ render_field(form.phone) }}
+			{{ render_field(form.address) }}
+			<button id="editing">submit</button>
+	</form>
+

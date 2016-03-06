@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<script src ="../static/js/jquery-1.12.1.min.js"></script>
+<script src ="../static/js/delivery.js"></script>
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+<title>Completed Deliveries</title>
+<button onclick="location.href='/'"> Go Back Home </button>
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+<h1>Results</h1>
+	<table style="width:100%">
+		<form method="POST" action={{ url_for('delivery_updates') }} id='deliveries' name='deliveries'>
+		<tr>
+			<th>id</th>
+			<th>Customer Name</th>
+			<th>Delivery Status</th>
+			<th>Customer Address</th>
+			<th>Delivery Driver</th>
+		</tr>
+			{% for information in results %}
+		<tr>
+			{% for point in information %}
+			<td>{{ point }}</td>
+			{% endfor %}
+		</tr>
+			{% endfor %}
+	</table>

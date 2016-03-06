@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+<html lang="en">
+
+
+
+	<head>
+		<title>Delivery</title>
+	</head>
+	<body>
+		<form method="POST">
+			<dl>
+				{{ form.csrf_token }}
+				{% from "_formhelpers.html" import render_field %}
+				{{ render_field(form.phone) }}
+				{{ form.submit() }}
+		</form>
+		<br />
+		<a class="button" href='/delivery_drivers'>Look at Deliveries</a>
+		<a class="button" href={{url_for('completed_updates')}}>Completed Deliveries</a>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<script src ="../static/js/jquery-1.12.1.min.js"></script>
+<script src ="../static/js/delivery.js"></script>
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+<title>Current Deliveries</title>
+<button onclick="location.href='/'"> Go Back Home </button>
+<button onclick="location.href='{{ url_for('drivers') }}'"> Go Back </button>
+	{% if results %}
+	<h1>Results</h1>
+	<table style="width:100%">
+		<form method="POST" action={{ url_for('delivery_updates') }} id='deliveries' name='deliveries'>
+		<tr>
+			<th></th>
+			<th>id</th>
+			<th>Customer Name</th>
+			<th>Delivery Status</th>
+			<th>Customer Address</th>
+			<th>Delivery Driver</th>
+		</tr>
+			{% for information in results %}
+		<tr>
+			<td><input name='deliveries' value={{information[0]}} type="checkbox"></td>
+			{% for point in information %}
+			<td>{{ point }}</td>
+			{% endfor %}
+		</tr>
+			{% endfor %}
+	</table>
+	<button type='submit' name='submit' value='out'>Out For Delivery</button>
+	<button type='submit' name='submit' value='completed'>Completed Delivery</button>
+		</form>
+	<br />
+
+	{% else %}
+	<p>No Results Found</p>
+	{% endif %}

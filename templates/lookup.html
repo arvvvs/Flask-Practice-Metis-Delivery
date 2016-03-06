@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<script src ="../static/js/jquery-1.12.1.min.js"></script>
+<script src ="../static/js/delivery.js"></script>
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+<button onclick="location.href='/'"> Go Back </button>
+	{% if results %}
+	<h1>Results</h1>
+	<table style="width:100%">
+		<tr>
+			<th></th>
+			<th>Name</th>
+			<th>Address</th>
+			<th>Phone Number</th>
+		</tr>
+			{% for information in results %}
+		<tr>
+			<td><input type="radio" name="list-customers" value={{ information[0] }}></td>
+			{% for point in information %}
+			<td>{{ point }}</td>
+			{% endfor %}
+		</tr>
+			{% endfor %}
+	</table>
+	<br />
+
+			<button id="edit">Edit Selection</button>
+			<button id="calculate">Place Order</button>
+			<div id="edit-modal">
+
+			</div>
+	{% else %}
+	<p>No results for that phone number {{ phone }}  were found</p>
+	{% endif %}
+	<form method="POST">
+		<dl>
+
+		<a class='button' href='/new-entry'> New Entry </a>
+	</form>
+			
