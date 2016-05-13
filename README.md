@@ -20,5 +20,6 @@ Editing a Customer's info
 Looking up and selecting Delivery Drivers, and looking at their orders
 ![Delivery Drivers]
 (https://cloud.githubusercontent.com/assets/5385234/15240599/1c998722-18eb-11e6-9faf-eab6ee03132c.png)
-![Looking up all deliveries in progress)
+Looking up all deliveries in progress
+![Looking up all deliveries in progress]
 (https://cloud.githubusercontent.com/assets/5385234/15240597/19da19a2-18eb-11e6-849f-12537bdd5a08.png)
